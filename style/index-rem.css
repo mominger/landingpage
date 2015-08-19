@@ -1,0 +1,40 @@
+
+
+#content{
+    width:15rem;
+    min-height:26.68rem;
+    margin:0 auto;
+    background: url(../images/bg.png) no-repeat #2e2e2e;
+    background-size: 15rem 26.68rem;
+}
+
+#content>ul{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+}
+
+.tip-top{
+    width:14.12rem;
+    height:13.12rem;
+    margin-top:2.24rem;
+    background: url(../images/tip-top.png) no-repeat;
+    background-size: 14.12rem 13.12rem;
+}
+.tip-mid{
+    width:10rem;
+    height:1.3rem;
+    margin-top:0.88rem;
+    background: url(../images/tip-mid.png) no-repeat;
+    background-size: 10rem 1.3rem;
+}
+.download{
+    margin-top:2.2rem;
+}
+.download>a{
+    display: block;
+    width:10.02rem;
+    height:3.64rem;
+    background: url(../images/download.png) no-repeat;
+    background-size: 10.02rem 3.64rem;
+}

@@ -1,0 +1,8 @@
+{
+    "files": ["./style/index.css","./style/wechat.css"],
+    "root_value": 50,
+    "unit_precision": 3,
+    "prop_white_list": ["width", "height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "margin", "margin-top", "margin-right", "margin-bottom", "margin-left","font", "font-size", "line-height", "letter-spacing","min-height","background-size","min-height"],
+    "replace": true,
+    "media_query": false
+}

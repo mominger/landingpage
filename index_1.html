@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="dns-prefetch" href="//res.m.suning.com">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="http://m.suning.com/RES/wap/V3/images/suning-icon-114-114.png" rel="apple-touch-icon-precomposed">
+    <link rel="shortcut icon" href="http://www.suning.com/favicon.ico" type="image/x-icon">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="wap-font-scale" content="no">
+    <title>苏宁易购</title>
+    <link rel="stylesheet" type="text/css" href="http://res.m.suning.com/common/style/base/2.0/base.css?v=${versionNo}">
+    <link rel="stylesheet" type="text/css" href="style/wechat-rem.css?v=${versionNo}">
+</head>
+<body>
+    <section id="landwx">
+        <ul>
+            <li class="wx-tip"></li>
+            <li class="wx-logo"></li>
+        </ul>
+    </section>
+    <div class="sn-html5-loading fixedLoading" id="Sn_Loading"><div class="blueball"></div><div class="orangeball"></div></div>
+
+    <script type="text/javascript" src="script/util.js?v=${versionNo}"></script>
+    <script>
+        /*  中转页
+         判断当前环境，重定向到对应页面。
+         苏宁APP扫描，直接路由
+         微信扫描，到微信着落页。URL为中转页。
+            其他，如果不需要唤醒，直接去下载页面/Wap页面/苏宁首页
+                如果需要唤醒，判断APP是否安装，安装打开。
+                如果安装了APP，打开，没有安装，到下载页
+                未安装，直接去下载页面/Wap页面/苏宁首页
+         */
+
+        //验证方法
+        var contexts = {
+            'WebChat':/micromessenger/i,
+            'SN':/snebuy-app/i,
+            'Android':/android/i,
+            'IOS':/(iPhone|iPod|iPad);?/i
+        };
+        var CheckContexs = {};
+        var ua = window.navigator.userAgent;
+        for(var k in contexts){
+//            var name = 'is'+ k,v = contexts[k];
+
+            (function(name,v){
+                CheckContexs[name] = function(){
+                    return v.test(ua);
+                }
+            })('is'+ k, contexts[k]);
+        }
+
+        var toWeChat = function(){
+            document.querySelector('#landwx').show();
+            document.querySelector('.sn-html5-loading').hide();
+        }
+
+        var URL_PARAM = $U.getURLParam();
+
+        var params = ['utm_source','utm_medium','utm_content','utm_term','adTypeCode','adId','utm_campaign','channeltype','store'];
+        var iphoneUrl = SN.getURLIOS($U.filterJSON(URL_PARAM,params));
+        var androidUrl = SN.getURLAndroid($U.filterJSON(URL_PARAM,params));
+        var downAndroid;
+        var downIOS = downAndroid = $U.addURLParam(SN.getWapURL(URL_PARAM,URL_PARAM['downloadurl'] && 'download.html'),$U.filterJSON(URL_PARAM,['url'],true));
+
+        var isIOS = CheckContexs.isIOS();
+        var isAndroid = CheckContexs.isAndroid();
+        var isWetChat =  CheckContexs.isWebChat();
+
+        var isNeedOpen = URL_PARAM['haswake'] == 1;
+
+        if(isWetChat){
+            toWeChat();
+        }else{
+            if(isNeedOpen){
+                SN.openClient(iphoneUrl,androidUrl,downIOS,downAndroid);
+            }else{
+                $U.redirect(downIOS,'',true)
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="dns-prefetch" href="//res.m.suning.com">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="http://m.suning.com/RES/wap/V3/images/suning-icon-114-114.png" rel="apple-touch-icon-precomposed">
+    <link rel="shortcut icon" href="http://www.suning.com/favicon.ico" type="image/x-icon">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="wap-font-scale" content="no">
+    <title>苏宁易购</title>
+    <link rel="stylesheet" type="text/css" href="http://res.m.suning.com/common/style/base/2.0/base.css?v=${versionNo}">
+    <link rel="stylesheet" type="text/css" href="style/index-rem.css?v=${versionNo}">
+</head>
+<body>
+   <section id="content">
+       <ul>
+           <li class="tip-top"></li>
+           <li class="tip-mid"></li>
+           <li class="download"><a href="javascript:void(0);"></a></li>
+       </ul>
+   </section>
+
+   <script type="text/javascript" src="script/util.js?v=${versionNo}"></script>
+   <script>
+       /*如果不需要唤醒，直接去下载页面/Wap页面/苏宁首页
+       如果需要唤醒，判断APP是否安装，安装打开。
+       未安装，直接去下载页面/Wap页面/苏宁首页*/
+       var URL_PARAM = $U.getURLParam();
+
+       var setURL = function(){
+           document.querySelector('.download a').addEventListener('click',function(){
+                window.location =  $U.addURLParam(SN.getWapURL(URL_PARAM),$U.filterJSON(URL_PARAM,['downloadurl'],true));
+           })
+//           document.querySelector('.download a').href=$U.addURLParam(SN.getWapURL(URL_PARAM),$U.filterJSON(URL_PARAM,['downloadurl'],true));
+       }
+
+       setURL();
+
+   </script>
+</body>
+</html>

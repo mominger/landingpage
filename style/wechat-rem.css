@@ -1,0 +1,32 @@
+
+
+#landwx{
+    display: none;
+    width:15rem;
+    min-height:26.68rem;
+    margin:0 auto;
+    background: url(../images/bg.png) no-repeat #2e2e2e;
+    background-size: 15rem 26.68rem;
+}
+
+#landwx>ul{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+}
+
+.wx-tip{
+    width:13.36rem;
+    height:20.44rem;
+    margin-top:1.08rem;
+    background: url(../images/tip-wechat.png) no-repeat;
+    background-size: 13.36rem 20.44rem;
+}
+.wx-logo{
+    width:6.64rem;
+    height:2.1rem;
+    margin-top:1rem;
+    margin-left:-1rem;
+    background: url(../images/logo.png) no-repeat;
+    background-size: 6.64rem 2.1rem;
+}

@@ -1,0 +1,40 @@
+
+
+#content{
+    width:15rem;
+    min-height:1334px;
+    margin:0 auto;
+    background: url(../images/bg.png) no-repeat #2e2e2e;
+    background-size: 750px 1334px;
+}
+
+#content>ul{
+    display: -webkit-flex;
+    -webkit-flex-direction:column;
+    -webkit-align-items:center;
+    flex-direction:column;
+    align-items:center;
+}
+
+.tip-top{
+    width:706px;
+    height:656px;
+    margin-top:112px;
+    background: url(../images/tip-top.png) no-repeat;
+    background-size: 706px 656px;
+}
+.tip-mid{
+    width:500px;
+    height:65px;
+    margin-top:44px;
+    background: url(../images/tip-mid.png) no-repeat;
+    background-size: 500px 65px;
+}
+.download>a{
+    display: block;
+    width:501px;
+    height:182px;
+    margin-top:110px;
+    background: url(../images/download.png) no-repeat;
+    background-size: 501px 182px;
+}
